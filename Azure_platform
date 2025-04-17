@@ -1,0 +1,5 @@
+Environment Setup:- 
+
+Created Azure resources: Blob Storage, ADF, Databricks Workspace, Synapse Analytics SQL Pool
+
+Uploaded raw CSV file to Blob Storage: iot-data/raw/sensor_data.csv
