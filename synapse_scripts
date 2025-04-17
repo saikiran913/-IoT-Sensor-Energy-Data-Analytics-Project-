@@ -7,3 +7,18 @@ CREATE TABLE energy_sensor_data (
     energy_star_rating FLOAT, ELEVATION FLOAT,
     january_min_temp INT, january_avg_temp FLOAT, ..., site_eui FLOAT, id INT
 );
+
+~ After creating the Table, We need to do Data Validation in Synapse ~
+
+-- Row count
+SELECT COUNT(*) FROM energy_sensor_data;
+
+-- Sample records
+SELECT TOP 10 * FROM energy_sensor_data;
+
+-- Check for anomalies
+SELECT COUNT(*) FROM energy_sensor_data WHERE anomaly = 1;
+
+-- Group by facility type
+SELECT facility_type, COUNT(*) FROM energy_sensor_data GROUP BY facility_type;
+
