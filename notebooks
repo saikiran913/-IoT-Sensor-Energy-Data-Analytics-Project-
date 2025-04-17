@@ -1,1 +1,13 @@
+#~ Data Cleaning & Enrichment in Databricks ~#
 
+Performed using PySpark:
+
+Dropped nulls and duplicates
+
+Casted columns to appropriate data types
+
+Added time-based features (e.g., hour, day_of_week)
+
+Applied basic anomaly detection using Z-score method on sensor_value, site_eui, and other numeric columns
+
+Saved the enriched DataFrame to a Delta format file for further use
