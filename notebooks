@@ -36,7 +36,7 @@ mean_val, std_val = stats["mean_val"], stats["std_val"]
 df = df.withColumn("anomaly", (col("site_eui") > (mean_val + 3 * std_val)).cast("int"))
 
 
-Write from Databricks to load the Cleaned data from databricks to synapse analytics (SQL database):- 
+~ Write from Databricks to load the Cleaned data from databricks to synapse analytics (SQL database):- 
 
 synapse_jdbc_url = "jdbc:sqlserver://<synapse>.sql.azuresynapse.net:1433;database=<dbname>;user=<user>;password=<password>;..."
 
