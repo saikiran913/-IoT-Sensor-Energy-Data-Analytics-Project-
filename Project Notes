@@ -1,1 +1,80 @@
+✅ Step-by-Step Notes
+🔹 Step 1: Dataset Selection & Storage
+Source: Kaggle IoT Energy Dataset
+
+Uploaded to Azure Blob Storage under:
+iot-data/raw/sensor_data.csv
+
+🔹 Step 2: Azure Resources Setup
+Azure Data Factory: For pipeline orchestration
+
+Azure Databricks: For data transformation and anomaly detection
+
+Azure Synapse Analytics: For centralized data storage and querying
+
+Azure Storage Account: Acts as raw and staging layer
+
+🔹 Step 3: Data Ingestion via Azure Data Factory
+Created a pipeline in ADF: IoT_Ingestion_Pipeline
+
+Used Linked Services to connect Blob Storage and Databricks
+
+Configured datasets for:
+
+Source: Delimited CSV in Blob
+
+Sink: Databricks notebook
+
+Used Databricks Notebook Activity to trigger transformation jobs
+
+🔹 Step 4: Data Cleaning & Enrichment in Databricks
+Read the raw CSV into a Spark DataFrame
+
+Performed cleaning:
+
+Dropped nulls
+
+Casted types
+
+Enrichment:
+
+Extracted time-based features: hour, day_of_week, season (optional)
+
+Performed anomaly detection using Z-score method on site_eui and avg_temp
+
+🔹 Step 5: Data Quality Checks (in Databricks)
+Checked for:
+
+Null values
+
+Duplicates
+
+Outliers
+
+Invalid ranges
+
+Generated summary statistics for numerical columns
+
+🔹 Step 6: Write Data to Synapse Analytics
+Created SQL table: energy_sensor_data in Synapse SQL Pool
+
+Used Databricks write() with com.databricks.spark.sqldw connector
+
+Used tempDir from Blob Storage for intermediate staging
+
+🔹 Step 7: Validate Data in Synapse
+Verified row count and data integrity.
+
+🔹 Step 8: Optional Analytics & Reporting
+(Optional for this repo or as next phase)
+
+Connected Power BI to Synapse
+
+Built dashboard for:
+
+site_eui trends
+
+High temperature sites
+
+Daily/monthly sensor anomalies
 
