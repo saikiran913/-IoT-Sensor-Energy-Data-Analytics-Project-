@@ -34,3 +34,19 @@ from pyspark.sql.functions import mean, stddev, col
 stats = df.select(mean("site_eui").alias("mean_val"), stddev("site_eui").alias("std_val")).collect()[0]
 mean_val, std_val = stats["mean_val"], stats["std_val"]
 df = df.withColumn("anomaly", (col("site_eui") > (mean_val + 3 * std_val)).cast("int"))
+
+
+Write from Databricks to load the Cleaned data from databricks to synapse analytics (SQL database):- 
+
+synapse_jdbc_url = "jdbc:sqlserver://<synapse>.sql.azuresynapse.net:1433;database=<dbname>;user=<user>;password=<password>;..."
+
+df.write \
+  .format("com.databricks.spark.sqldw") \
+  .option("url", synapse_jdbc_url) \
+  .option("dbtable", "energy_sensor_data") \
+  .option("forwardSparkAzureStorageCredentials", "true") \
+  .option("tempDir", "wasbs://<container>@<storageaccount>.blob.core.windows.net/tempdir/") \
+  .mode("overwrite") \
+  .save()
+
+
