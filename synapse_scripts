@@ -1,1 +1,9 @@
+#~ Create a Table in the synapse platform after creating table we will load the data from 
+Databricks into the Synapse Analytics Sql DataBase:-
 
+CREATE TABLE energy_sensor_data (
+    Year_Factor INT, State_Factor NVARCHAR(50), building_class NVARCHAR(50),
+    facility_type NVARCHAR(100), floor_area FLOAT, year_built FLOAT,
+    energy_star_rating FLOAT, ELEVATION FLOAT,
+    january_min_temp INT, january_avg_temp FLOAT, ..., site_eui FLOAT, id INT
+);
