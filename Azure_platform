@@ -3,3 +3,32 @@ Environment Setup:-
 Created Azure resources: Blob Storage, ADF, Databricks Workspace, Synapse Analytics SQL Pool
 
 Uploaded raw CSV file to Blob Storage: iot-data/raw/sensor_data.csv
+
+# Environment Setup ~
+
+1- Create Azure Resources
+
+- Azure Data Factory (ADF)
+
+- Azure Databricks Workspace
+
+- Azure Synapse Analytics workspace and dedicated SQL pool
+
+- Azure Storage Account (for raw data)
+
+2- Dataset Selection & Upload
+
+Download IoT sensor dataset from Kaggle (e.g., Energy consumption)
+
+Upload it to Azure Storage Account (Blob Storage)
+
+Example structure:
+
+/iot-data/raw/
+  - sensor_data.csv
+
+3- Link Services
+
+Connect Storage Account to ADF, Databricks, and Synapse.
+
+Set up Linked Services in ADF for Storage and Databricks.
