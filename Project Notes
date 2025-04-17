@@ -1,3 +1,23 @@
+
+Project Title: IoT Sensor / Energy Data Analytics using Azure
+
+Objective:
+Build a data engineering pipeline using Azure services to process and analyze IoT energy/environmental sensor data.
+The objective is to clean, enrich, detect anomalies, and store the data for reporting and analytics.
+
+Tools Used:- 
+
+Azure Data Factory – For data ingestion and orchestration
+
+Azure Databricks – For data transformation, cleaning, and anomaly detection
+
+Azure Synapse Analytics – For storing and querying the processed data
+
+Azure Blob Storage – For raw and temporary file storage
+
+Kaggle Dataset – Energy & environmental metrics dataset
+
+
 ✅ Step-by-Step Notes
 🔹 Step 1: Dataset Selection & Storage
 Source: Kaggle IoT Energy Dataset
