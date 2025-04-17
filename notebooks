@@ -11,3 +11,26 @@ Added time-based features (e.g., hour, day_of_week)
 Applied basic anomaly detection using Z-score method on sensor_value, site_eui, and other numeric columns
 
 Saved the enriched DataFrame to a Delta format file for further use
+
+
+Data Cleaning and Enrichment in Databricks:-
+
+# Load CSV
+path = "dbfs:/mnt/raw/iot-data/sensor_data.csv"
+df = spark.read.csv(path, header=True, inferSchema=True)
+
+# Drop nulls
+df = df.dropna()
+
+# Feature engineering
+from pyspark.sql.functions import hour, dayofweek
+
+# (Assume timestamp is derived elsewhere if needed)
+df = df.withColumn("hour", hour("timestamp"))
+df = df.withColumn("day_of_week", dayofweek("timestamp"))
+
+# Anomaly detection on site_eui
+from pyspark.sql.functions import mean, stddev, col
+stats = df.select(mean("site_eui").alias("mean_val"), stddev("site_eui").alias("std_val")).collect()[0]
+mean_val, std_val = stats["mean_val"], stats["std_val"]
+df = df.withColumn("anomaly", (col("site_eui") > (mean_val + 3 * std_val)).cast("int"))
