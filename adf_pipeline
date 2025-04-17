@@ -1,1 +1,20 @@
+~#- Data Ingestion with ADF #~
+
+Objective:
+Trigger a Databricks notebook using ADF pipeline to begin data processing.
+
+ADF Pipeline Includes:
+Linked Services:
+
+Azure Blob Storage
+
+Azure Databricks (token + cluster)
+
+Activity: Databricks Notebook
+
+Parameters: Blob path (if dynamic)
+
+Output:
+ADF successfully ran the notebook using the raw dataset
+
 
